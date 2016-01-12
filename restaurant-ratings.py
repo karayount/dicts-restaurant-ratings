@@ -10,14 +10,18 @@ def read_ratings_file(restaurant_rating_file):
             restaurant_ratings[rating_tokens[0]] = int(rating_tokens[1])
     return restaurant_ratings
 
-
 restaurant_ratings = read_ratings_file(restaurant_rating_file)
-print restaurant_ratings
-# A
-# assign sorted list of keys to a variable
+# print restaurant_ratings
 
-# loop through list printing that key in dictionary with its value
-# 
+def print_ratings(ratings):    
+    # A
+    # assign sorted list of keys to a variable
+    restaurant_names = sorted(ratings.keys())
+    # loop through list printing that key in dictionary with its value
+    for restaurant in restaurant_names:
+        print restaurant, "is rated at", ratings[restaurant], "."
+
+print_ratings(restaurant_ratings)
 # B
 # get tuples of items in dictionary
 # sort that list of tuples
