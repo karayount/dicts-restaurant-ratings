@@ -1,3 +1,5 @@
+from random import shuffle
+
 restaurant_rating_file = "scores.txt"
 
 def read_ratings_file(restaurant_rating_file):
@@ -36,11 +38,17 @@ def user_add_restaurant(ratings):
 user_add_restaurant(restaurant_ratings)
 print_ratings(restaurant_ratings)
 
+def update_random_restaurant(ratings):
+    user_name = raw_input("Welcome to the rating updater. What's your name? ")
+    random_restaurants = ratings.keys()
+    shuffle(random_restaurants)
+    print random_restaurants
+    for restaurant in random_restaurants:
+        response = raw_input("{}, please enter a rating for {}, between 1 and 5. Enter q to quit. ".format(user_name, restaurant))
+        if response.lower() == "q":
+            break
+        ratings[restaurant] = int(float(response))
 
 
-# for a rainy day
-#main user input function
-#   ask them if they want to enter a new restaurant or a new rating
-#   call new restaurant function to add new
-#   call modify rating function to change rating
-#   do they want to add/modify another restaurant/rating?
+update_random_restaurant(restaurant_ratings)
+print_ratings(restaurant_ratings)
