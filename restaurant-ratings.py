@@ -23,11 +23,24 @@ restaurant_ratings = read_ratings_file(restaurant_rating_file)
 print_ratings(restaurant_ratings)
 
 
+def user_add_restaurant(ratings):
+    """Promts user for new restaurant and its rating, ensures it's not duplicated, then adds them to dictionary"""
+
+    new_restaurant = raw_input("What is the new restaurant's name? ")
+    while new_restaurant in ratings:
+        new_restaurant = raw_input("That restaurant is already listed. \nWhat is the NEW restaurant's name? ")
+    ratings[new_restaurant] = int(raw_input("Rate {} from 1 to 5: ".format(new_restaurant)))
+    return ratings
 
 
-# print method B
-# get tuples of items in dictionary
-# sort that list of tuples
-# loop through, printing items
+user_add_restaurant(restaurant_ratings)
+print_ratings(restaurant_ratings)
 
 
+
+# for a rainy day
+#main user input function
+#   ask them if they want to enter a new restaurant or a new rating
+#   call new restaurant function to add new
+#   call modify rating function to change rating
+#   do they want to add/modify another restaurant/rating?
